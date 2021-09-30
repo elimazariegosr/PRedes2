@@ -1,17 +1,20 @@
 version: "2.4"
 services:
-  balancer:
-    build: ./Balancer
+  db:
+    image: mysql
+    #command: --default-authentication-plugin=mysql_native_password
     restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
     ports:
-      - "5005:5005"
+      - "3306:3306"
     networks:
-      - service_network
+      - db_network
   server1:
     build: ./Server1
     restart: always
     ports:
-      - "5006:5006"
+      - "5006"
     networks:
       - service_network
       - db_network 
@@ -19,7 +22,7 @@ services:
     build: ./Server2
     restart: always
     ports:
-      - "5007:5007"
+      - "5006"
     networks:
       - service_network
       - db_network 
@@ -27,21 +30,23 @@ services:
     build: ./Server3
     restart: always
     ports:
-      - "5008:5008"
+      - "5006"
     networks:
       - service_network
       - db_network
-      
-  db:
-      image: mysql
-      #command: --default-authentication-plugin=mysql_native_password
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD: 1234
-      ports:
-        - "3306:3306"
-      networks:
-        - db_network       
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - server1
+      - server2
+      - server3
+    ports:
+      - "4000:4000"
+    networks:
+      - service_network
+       
 networks:
   service_network:
     driver: bridge

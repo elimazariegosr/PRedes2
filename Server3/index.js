@@ -3,7 +3,7 @@ var body_parser = require('body-parser')
 var mysql = require('mysql2');
 const axios = require('axios')
 const app = express()
-const port = 5008
+const port = 5006
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
 const cors = require('cors');
