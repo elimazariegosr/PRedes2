@@ -37,9 +37,9 @@ networks:
     ipam:
       config:
         - subnet: 172.35.71.0/24
-    external: true    
+      external: true    
   db_network:
     ipam:
       config:
         - subnet: 10.10.11.0/24        
-    external: true    
+      external: true    
