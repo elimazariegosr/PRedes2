@@ -14,8 +14,9 @@ services:
     ports:
       - "5006:5006"
     networks:
-      service_network:
-        ipv4_address: 172.35.71.7
+      - puente
+      #service_network:
+        #ipv4_address: 172.35.71.7
       db_network:
         ipv4_address: 10.10.11.3 
   server2:
@@ -24,8 +25,9 @@ services:
     ports:
       - "5007:5007"
     networks:
-      service_network:
-        ipv4_address: 172.35.71.8
+      - puente
+      #service_network:
+        #ipv4_address: 172.35.71.8
       db_network:
         ipv4_address: 10.10.11.4 
   server3:
@@ -34,8 +36,9 @@ services:
     ports:
       - "5008:5008"
     networks:
-      service_network:
-        ipv4_address: 172.35.71.9
+      - puente
+      #service_network:
+        #ipv4_address: 172.35.71.9
       db_network:
         ipv4_address: 10.10.11.5 
   db:
@@ -46,17 +49,17 @@ services:
         MYSQL_ROOT_PASSWORD: 1234
       ports:
         - "3306:3306"
-      networks:             
+      networks:         
         db_network:
           ipv4_address: 10.10.11.2
 networks:
-  driver: bridge
   service_network:
     ipam:
       config:
         - subnet: 172.35.71.0/24
   db_network:
-    driver: bridge
     ipam:
       config:
-        - subnet: 10.10.11.0/24        
+        - subnet: 10.10.11.0/24
+  puente:
+    driver: bridge              
