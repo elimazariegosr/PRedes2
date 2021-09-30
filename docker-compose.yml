@@ -6,28 +6,34 @@ services:
     ports:
       - "5005:5005"
     networks:
-      - networkapi.  
+      mynetwork:
+        ipv4_address: 172.35.71.6  
   server1:
     build: ./Server1
     restart: always
     ports:
       - "5006:5006"
     networks:
-      - networkapi.  
+      mynetwork:
+        ipv4_address: 172.35.71.7 
   server2:
     build: ./Server2
     restart: always
     ports:
       - "5007:5007"
     networks:
-      - networkapi.
+      mynetwork:
+        ipv4_address: 172.35.71.8
   server3:
     build: ./Server3
     restart: always
     ports:
       - "5008:5008"
     networks:
-      - networkapi.
+      mynetwork:
+        ipv4_address: 172.35.71.9
 networks:
-  networkapi.:
-    driver: "bridge"
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 172.35.71.0/24 

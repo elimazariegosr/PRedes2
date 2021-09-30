@@ -9,7 +9,7 @@ const cors = require('cors');
 var corsOptions = { origin: true, optionsSuccessStatus: 200 };
 app.use(cors(corsOptions));
 
-var servers = ['http://server1:5006/','http://server2:5007/','http://server3:5008/']
+var servers = ['http://172.35.71.7:5006/','http://172.35.71.8:5007/','http://172.35.71.9:5008/']
 app.get('/', (req, res) => {
     let body = req.body
 	axios.get(get_balance(), body).then(function (x) {
