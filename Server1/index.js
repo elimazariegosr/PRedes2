@@ -1,6 +1,6 @@
 const express = require('express')
 var body_parser = require('body-parser')
-var mysql = require('mysql2');
+var mysql = require('mysql');
 const axios = require('axios')
 const app = express()
 const port = 5006
@@ -13,7 +13,9 @@ app.use(cors(corsOptions));
 var connection = mysql.createConnection({
     host     : '10.10.11.2',
     user     : 'root',
-    password : '1234'
+    password : '1234',
+    port: 3306,
+   database: 'db_redes'
 });
 connection.connect();
     
@@ -32,5 +34,5 @@ app.get('/', (req, res) => {
     res.send("conectado a la db server 1")
 })
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Servidor1: ${port}`)
 })
