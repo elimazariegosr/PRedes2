@@ -6,7 +6,7 @@ services:
     ports:
       - "5005:5005"
     networks:
-      mynetwork:
+      service_network:
         ipv4_address: 172.35.71.6  
   server1:
     build: ./Server1
@@ -14,7 +14,7 @@ services:
     ports:
       - "5006:5006"
     networks:
-      mynetwork:
+      service_network:
         ipv4_address: 172.35.71.7 
   server2:
     build: ./Server2
@@ -22,7 +22,7 @@ services:
     ports:
       - "5007:5007"
     networks:
-      mynetwork:
+      service_network:
         ipv4_address: 172.35.71.8
   server3:
     build: ./Server3
@@ -30,10 +30,15 @@ services:
     ports:
       - "5008:5008"
     networks:
-      mynetwork:
-        ipv4_address: 172.35.71.9
+      db_network:
+        ipv4_address: 10.10.11.3
 networks:
-  mynetwork:
+  service_network:
     ipam:
       config:
-        - subnet: 172.35.71.0/24 
+        - subnet: 172.35.71.0/24
+  db_network:
+    ipam:
+      config:
+        - subnet: 10.10.11.0/24        
+
