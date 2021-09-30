@@ -32,11 +32,11 @@ services:
     ports:
       - "5008:5008"
     networks:
-      db_network:
+      service_network:
         ipv4_address: 172.35.71.9
   db:
       image: mysql
-      command: --default-authentication-plugin=mysql_native_password
+      #command: --default-authentication-plugin=mysql_native_password
       restart: always
       environment:
         MYSQL_ROOT_PASSWORD: 1234

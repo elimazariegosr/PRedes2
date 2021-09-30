@@ -15,10 +15,11 @@ var connection = mysql.createConnection({
     user     : 'root',
     password : '1234'
 });
-  
 connection.connect();
+    
 
 function getConnection(){
+    
     connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
         if (err) throw err;
             console.log(rows[0].solution)
