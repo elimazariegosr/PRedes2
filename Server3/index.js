@@ -11,7 +11,7 @@ var corsOptions = { origin: true, optionsSuccessStatus: 200 };
 app.use(cors(corsOptions));
 
 var connection = mysql.createConnection({
-    host     : '10.10.11.2',
+    host     : 'db',
     user     : 'root',
     password : '1234',
     port: 3306,
