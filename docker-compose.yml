@@ -27,7 +27,7 @@ services:
       service_network:
         ipv4_address: 172.35.71.8
       db_network:
-        ipv4_address: 10.10.11.3 
+        ipv4_address: 10.10.11.4 
   server3:
     build: ./Server3
     restart: always
@@ -37,7 +37,7 @@ services:
       service_network:
         ipv4_address: 172.35.71.9
       db_network:
-        ipv4_address: 10.10.11.3 
+        ipv4_address: 10.10.11.5 
   db:
       image: mysql
       #command: --default-authentication-plugin=mysql_native_password
