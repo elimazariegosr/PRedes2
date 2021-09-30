@@ -5,18 +5,29 @@ services:
     restart: always
     ports:
       - "5005:5005"
+    networks:
+      - networkapi.  
   server1:
     build: ./Server1
     restart: always
     ports:
       - "5006:5006"
+    networks:
+      - networkapi.  
   server2:
     build: ./Server2
     restart: always
     ports:
       - "5007:5007"
+    networks:
+      - networkapi.
   server3:
     build: ./Server3
     restart: always
     ports:
       - "5008:5008"
+    networks:
+      - networkapi.
+networks:
+  networkapi.:
+    driver: "bridge"

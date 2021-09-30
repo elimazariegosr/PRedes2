@@ -9,9 +9,9 @@ const cors = require('cors');
 var corsOptions = { origin: true, optionsSuccessStatus: 200 };
 app.use(cors(corsOptions));
 
-var url_server1 = 'http://localhost:5006/'
-var url_server2 = 'http://localhost:5007/'
-var url_server3 = 'http://localhost:5008/'
+var url_server1 = 'http://server1:5006/'
+var url_server2 = 'http://server2:5007/'
+var url_server3 = 'http://server3:5008/'
 var balance = 0;
 
 app.get('/', (req, res) => {
@@ -49,5 +49,5 @@ function get_balance(){
 }
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://balancer:${port}`)
 })
