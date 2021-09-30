@@ -21,6 +21,7 @@ app.post('/', (req, res) => {
 	
 	let body = req.body
     axios.post(get_balance(), body).then(function (x) {
+        console.log(x.data)
         res.send(x.data)
     })
 })
