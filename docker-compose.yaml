@@ -56,4 +56,4 @@ networks:
       driver: default
       config:
         - subnet: 10.10.11.0/24
-          gateway: 10.10.11.0             
+          gateway: 10.10.11.1             
