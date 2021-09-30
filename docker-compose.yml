@@ -7,7 +7,10 @@ services:
       - "5005:5005"
     networks:
       service_network:
-        ipv4_address: 172.35.71.6  
+        ipv4_address: 172.35.71.6
+      db_network:
+        ipv4_address: 10.10.11.1
+
   server1:
     build: ./Server1
     restart: always
@@ -37,9 +40,7 @@ networks:
     ipam:
       config:
         - subnet: 172.35.71.0/24
-      external: true    
   db_network:
     ipam:
       config:
         - subnet: 10.10.11.0/24        
-      external: true    
