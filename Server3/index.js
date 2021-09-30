@@ -11,6 +11,7 @@ app.use(cors(corsOptions));
 
 
 app.get('/', (req, res) => {
+    console.log("server3")
     res.send('Hello World! server 3')
 })
 app.listen(port, () => {
