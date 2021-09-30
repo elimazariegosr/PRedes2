@@ -43,7 +43,7 @@ services:
       - server2
       - server3
     ports:
-      - "4000:4000"
+      - "5005:5005"
     networks:
       - service_network
        
