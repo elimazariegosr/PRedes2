@@ -1,0 +1,22 @@
+version: "3.1"
+services:
+  balancer:
+  build: ./Balancer
+      restart: on-failure
+      ports:
+        - "5005:5005"
+  server1:
+      build: ./Server1
+      restart: on-failure
+      ports:
+        - "5006:5006"
+  server2:
+      build: ./Server2
+      restart: on-failure
+      ports:
+        - "5007:5007"
+  server3:
+      build: ./Server3
+      restart: on-failure
+      ports:
+        - "5008:5008"
