@@ -9,14 +9,10 @@ const cors = require('cors');
 var corsOptions = { origin: true, optionsSuccessStatus: 200 };
 app.use(cors(corsOptions));
 
-var url_server1 = 'http://server1:5006/'
-var url_server2 = 'http://server2:5007/'
-var url_server3 = 'http://server3:5008/'
-var balance = 0;
-
+var servers = ['http://server1:5006/','http://server2:5007/','http://server3:5008/']
 app.get('/', (req, res) => {
     let body = req.body
-    axios.get(get_balance(), body).then(function (x) {
+	axios.get(get_balance(), body).then(function (x) {
         res.send(x.data)
     })
 })
@@ -29,24 +25,9 @@ app.post('/', (req, res) => {
     })
 })
 
-
-function get_fecha(){
-    var hoy = new Date();
-    return hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() 
-}
-
-function get_balance(){
-	if(balance == 1){
-		balance++;
-		return url_server1;
-	}else if(balance == 2){
-		balance++;
-		return url_server2;
-	}else{
-		balance = 1;
-		return url_server3;
-	}
-}
+function get_balance() {
+	return  servers[(Math.floor(Math.random() * (4 - 1)) + 1)-1];
+  }
 
 app.listen(port, () => {
     console.log(`Example app listening at http://balancer:${port}`)
